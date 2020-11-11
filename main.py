@@ -44,19 +44,22 @@ infinitives = csvi.verbreturns()
 bigverbs = []
 zed = 0
 from time import sleep
+from random import randint
 for verb in infinitives:
     try:
         oneVerbConjugs = get_conjugations(verb)
+        # print(oneVerbConjugs)
         if len(oneVerbConjugs) == 0:
             continue
         oneVerbConjugs.insert(0, verb)
         # print(oneVerbConjugs)
-        if zed == 9:
-            break
         zed += 1
-        csvi.appverbs([csvi.formatting(oneVerbConjugs)])
+        csvi.appverbs([oneVerbConjugs])
+        print(f"successfully conjugated {verb}")
         # bigverbs.append(oneVerbConjugs)
     except:
         print(f"Err on {verb}")
+        sleep(randint(2, 6))
 # "https://www.verbformen.de/konjugation/?w=machen"
 # csvi.appverbs(bigverbs)
+print(f"Conjugated {zed} verbs")

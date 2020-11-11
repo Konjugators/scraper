@@ -3,7 +3,7 @@ def verbreturns():
 
 def formatting(verbs):
     length = len(verbs)
-    bad_things = ["⁵", "³", "²"]
+    bad_things = ["⁵", "³", "²"] 
     for i in range(length):
         for z in bad_things:
             verbs[i] = verbs[i].replace(z, "")
@@ -15,7 +15,7 @@ def appverbs(z:list):
     with open("new_verbs.csv", "a") as newverbs:
         csvWriter = csv.writer(newverbs, delimiter=",")
         csvWriter.writerows(z)
-    print("finished")
+    # print("finished")
 
 if __name__ == "__main__" or __name__ != "__main__":
     import csv
