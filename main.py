@@ -40,37 +40,26 @@ def get_conjugations(verb: str)->list:
     
     return conjugs
 
-
-import threading
-
 infinitives = csvi.verbreturns()
-starting = 7980
-infinitives = infinitives[starting:]
 bigverbs = []
-zed = starting
-in_row = 0
+zed = 0
 from time import sleep
 from random import randint
 for verb in infinitives:
     try:
-        # oneVerbConjugs = threading._start_new_thread(get_conjugations, verb)
-        oneVerbConjugs=get_conjugations(verb)
+        oneVerbConjugs = get_conjugations(verb)
+        # print(oneVerbConjugs)
         if len(oneVerbConjugs) == 0:
             continue
         oneVerbConjugs.insert(0, verb)
+        # print(oneVerbConjugs)
         zed += 1
         csvi.appverbs([oneVerbConjugs])
-        print(f"successfully conjugated {verb} at index {zed}")
-        in_row = 0
+        print(f"successfully conjugated {verb}")
+        # bigverbs.append(oneVerbConjugs)
     except:
         print(f"Err on {verb}")
-        # sleep(randint(2, 6))
-        in_row += 1
-        zed+=1
-    if in_row == 6:
-        print("Captcha Error!")
-        input()
+        sleep(randint(2, 6))
 # "https://www.verbformen.de/konjugation/?w=machen"
 # csvi.appverbs(bigverbs)
 print(f"Conjugated {zed} verbs")
-# Add spielen, lieben, haben, gehen
